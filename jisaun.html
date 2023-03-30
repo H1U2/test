@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>输入日期显示星期几</title>
+	<style>
+		/* 页面样式 */
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			text-align: center;
+		}
+		input[type="text"] {
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+		input[type="submit"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: #0099ff;
+			color: #fff;
+			font-weight: bold;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+	</style>
+</head>
+<body>
+	<h1>输入日期显示星期几</h1>
+	<form onsubmit="return false;">
+		<input type="text" id="year" name="year" placeholder="年份（如：2023）">
+		<input type="text" id="month" name="month" placeholder="月份（如：3）">
+		<input type="text" id="day" name="day" placeholder="日期（如：27）">
+		<input type="submit" value="计算" onclick="getWeekday()">
+	</form>
+	<p id="result"></p>
+
+	<script>
+		function getWeekday() {
+			// 获取用户输入的年月日
+			var inputYear = document.getElementById("year").value;
+			var inputMonth = document.getElementById("month").value;
+			var inputDay = document.getElementById("day").value;
+			// 将字符串转换为日期对象
+			var dateObj = new Date(inputYear, inputMonth - 1, inputDay);
+			// 获取星期几
+			var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][dateObj.getDay()];
+			// 显示结果
+			document.getElementById("result").innerHTML = "输入日期为：" + inputYear + "年" + inputMonth + "月" + inputDay + "日<br>星期几是：" + weekday;
+		}
+	</script>
+</body>
+</html>
